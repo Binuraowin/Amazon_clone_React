@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "Amazon_clone_React:src/Header.Header (nodejs10.x)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "amazon_clone",
+                "lambdaHandler": "src/Header.Header"
+            },
+            "lambda": {
+                "runtime": "nodejs10.x",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}
