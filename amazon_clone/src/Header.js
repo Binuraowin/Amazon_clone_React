@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import image from './images/logo2.jpg'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 
@@ -7,7 +8,7 @@ export default function Header() {
     return (
         <div className='header'>
             <img className="header_logo"
-            src='http://pngimg.com/uploads/amazon_PNG11.png'
+            src={image}
             />
             <div className="header_search">
 <input className="header_searchInput" type="text"/>
