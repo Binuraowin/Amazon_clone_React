@@ -20,10 +20,10 @@ function Home() {
                  <Product/>
              <Product/>
              <Product/>
-             <Product/>
+            
                  </div>
                  <div className="home_row">
-
+                 <Product/>
                  </div>
 
             </div >
