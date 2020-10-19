@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Product.css"
+import img1 from './images/headphone.jpg'
 
 function Product() {
     return (
@@ -12,7 +13,14 @@ function Product() {
     <small>$</small>
     <strong>19.99</strong>
 </p>
+<div className="product_rating">
+    <p>
+        *
+    </p>
+</div>
             </div>
+            <img src={img1}/>
+            <button>Add to Basket </button>
         </div>
     )
 }
