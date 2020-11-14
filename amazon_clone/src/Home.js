@@ -47,7 +47,7 @@ function Home() {
                  <Product title="Description"
              price={29.99}
              image={img1}
-             rating={5}
+             rating={4}
              />
           
                  </div>
