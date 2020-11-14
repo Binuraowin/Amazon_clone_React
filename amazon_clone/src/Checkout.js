@@ -8,12 +8,20 @@ function Checkout() {
                 <img className="checkout_ad"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRNnY-yAGva_Ql6RuCa6F2HTfcmt6MKQaBkww&usqp=CAU"
                 />
-               
-
-            </div>
+                <div>
             <h2 className="checkout_title">
                 Your shopping basket
             </h2>
+            </div>
+
+            </div>
+           
+            <div className="checkout_right">
+            <h2 >
+                sub total 
+            </h2>
+            </div>
+          
         </div>
     )
 }
