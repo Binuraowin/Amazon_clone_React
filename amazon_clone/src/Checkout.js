@@ -10,13 +10,11 @@ function Checkout() {
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRNnY-yAGva_Ql6RuCa6F2HTfcmt6MKQaBkww&usqp=CAU"
                 />
                 <div>
-            <h2 className="checkout_title">
-                Your shopping basket
+            <h2 className="checkout_title">Your shopping Basket
             </h2>
-            </div>
 
             </div>
-           
+            </div>           
             <div className="checkout_right">
           
             <Subtotal/>
