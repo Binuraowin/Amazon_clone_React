@@ -7,7 +7,7 @@ function Login() {
         <div className='login'>
             <Link to='/'>
             <img className='login_logo'
-             src='https://completemusicupdate.com/wp-content/uploads/2016/05/amazon1250.jpg '
+             src='https://www.marketplace.org/wp-content/uploads/2019/07/ama2.png?resize=740%2C204'
             />
             </Link>
 
