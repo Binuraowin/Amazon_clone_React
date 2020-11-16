@@ -1,6 +1,5 @@
 import React from 'react'
 import './Header.css'
-import image from './images/logo2.jpg'
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { Link } from 'react-router-dom';
@@ -12,7 +11,7 @@ export default function Header() {
         <div className='header'>
             <Link to="/">
             <img className="header_logo"
-            src={image}
+            src='https://completemusicupdate.com/wp-content/uploads/2016/05/amazon1250.jpg'
             />
             </Link>
            
