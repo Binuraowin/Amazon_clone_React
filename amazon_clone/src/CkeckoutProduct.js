@@ -5,6 +5,10 @@ import { useStateValue } from './StateProvider';
 function CkeckoutProduct({id, title, image, price,rating}) {
     const [{ basket }, dispatch]=useStateValue();
     const removeFromBasket = () =>{
+        dispatch( {
+            type: 'REMOVE_FROM_BASKET',
+            id: id,
+        })
 
     }
   
