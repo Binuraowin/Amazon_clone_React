@@ -19,8 +19,10 @@ function Payment() {
     const [error, setError] = useState(null);
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setClientSecret] = useState(true);
+
     const history = useHistory();
     
+
     useEffect(() => {
         
         const getClientSecret = async () => {
@@ -34,6 +36,7 @@ function Payment() {
 
         getClientSecret();
     }, [basket])
+
     const handleSubmit = async(event)  =>{
         event.preventDefault();
         setProcessing(true);
@@ -65,6 +68,7 @@ function Payment() {
 
             history.replace('/orders')
         })
+
     }
     const handleChange = event =>{
         setDisabled(event.empty);
@@ -131,6 +135,7 @@ function Payment() {
                                 </div>
 
                                   Errors
+
                                 {error && <div>{error}</div>}
                             </form>
                     </div>
