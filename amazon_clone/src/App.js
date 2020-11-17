@@ -10,6 +10,8 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import { useEffect } from 'react';
 import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 function App() {
   const [{}, dispatch] = useStateValue(); 
