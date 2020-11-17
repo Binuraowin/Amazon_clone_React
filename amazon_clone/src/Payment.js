@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Payment.css'
 import { useStateValue } from './StateProvider';
 import CheckoutProduct from "./CkeckoutProduct"
 import { Link } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import CurrencyFormat from 'react-currency-format';
+import { getBasketTotal } from './reducer';
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -11,6 +13,17 @@ function Payment() {
 
     const stripe = useStripe();
     const elements = useElements();
+    const [succeeded, setSucceeded] = useState(false);
+    const [processing, setProcessing] = useState("");
+    const [error, setError] = useState(null);
+    const [disabled, setDisabled] = useState(true);
+    const handleSubmit = e =>{
+
+    }
+    const handleChange = event =>{
+        setDisabled(event.empty);
+        setError(event.error ? event.error.message : "");
+    }
     return (
         <div className='payment'>
             <div className='payment_container'>
@@ -51,10 +64,8 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className="payment_details">
-                        <form>
-                            <CardElement/>
-                        </form>
-                            {/* <form onSubmit={handleSubmit}>
+                        
+                        <form onSubmit={handleSubmit}>
                                 <CardElement onChange={handleChange}/>
 
                                 <div className='payment__priceContainer'>
@@ -74,8 +85,8 @@ function Payment() {
                                 </div>
 
                                   {/* Errors */}
-                                {/* {error && <div>{error}</div>}
-                            </form> */} 
+                                {error && <div>{error}</div>}
+                            </form>
                     </div>
                     </div>
         </div>
