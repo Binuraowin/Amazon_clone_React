@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import './Payment.css'
-import { useStateValue } from './StateProvider';
-import CheckoutProduct from "./CkeckoutProduct"
-import { Link, useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import './Payment.css';
+import { useStateValue } from "./StateProvider";
+import CkeckoutProduct from "./CkeckoutProduct";
+import { Link, useHistory } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
-import CurrencyFormat from 'react-currency-format';
-import { getBasketTotal } from './reducer';
+import CurrencyFormat from "react-currency-format";
+import { getBasketTotal } from "./reducer";
 import axios from './axios';
+import { db } from "./firebase"
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
-    
+    const history = useHistory();
 
     const stripe = useStripe();
     const elements = useElements();
+
     const [succeeded, setSucceeded] = useState(false);
     const [processing, setProcessing] = useState("");
     const [error, setError] = useState(null);
     const [disabled, setDisabled] = useState(true);
     const [clientSecret, setClientSecret] = useState(true);
 
-    const history = useHistory();
     
 
     useEffect(() => {
@@ -47,30 +48,33 @@ function Payment() {
                 card: elements.getElement(CardElement)
             }
         }).then(({ paymentIntent }) => {
+            // paymentIntent = payment confirmation
+            console.log(basket)
 
-            // db
-            //   .collection('users')
-            //   .doc(user?.uid)
-            //   .collection('orders')
-            //   .doc(paymentIntent.id)
-            //   .set({
-            //       basket: basket,
-            //       amount: paymentIntent.amount,
-            //       created: paymentIntent.created
-            //   })
+            db
+              .collection('users')
+              .doc(user?.uid)
+              .collection('orders')
+              .doc(paymentIntent.id)
+              .set({
+                   basket: basket,
+                  amount: paymentIntent.amount,
+                  created: paymentIntent.created
+              })
 
             setSucceeded(true);
             setError(null)
             setProcessing(false)
 
-            // dispatch({
-            //     type: 'EMPTY_BASKET'
-            // })
+            dispatch({
+                type: 'EMPTY_BASKET'
+            })
 
             history.replace('/orders')
         })
 
     }
+
     const handleChange = event =>{
         setDisabled(event.empty);
         setError(event.error ? event.error.message : "");
@@ -99,7 +103,7 @@ function Payment() {
                     </div>
                     <div className='payment__items'>
                         {basket.map(item => (
-                            <CheckoutProduct
+                            <CkeckoutProduct
                                 id={item.id}
                                 title={item.title}
                                 image={item.image}
